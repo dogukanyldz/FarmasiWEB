@@ -1,0 +1,18 @@
+﻿@model Product
+<form asp-controller="Product" asp-action="CreateProduct" method="post">
+    <!-- Email input -->
+    <div class="form-outline mb-4">
+        <input asp-for="ProductName" type="text" id="form2Example1" class="form-control" />
+        <label class="form-label" for="form2Example1">Product Name</label>
+        <span asp-validation-for="ProductName"></span>
+    </div>
+    <div class="form-outline mb-4">
+        <input asp-for="Price" type="number" id="form2Example1" class="form-control" />
+        <label class="form-label" for="form2Example1">Price</label>
+        <span asp-validation-for="Price"></span>
+    </div>
+
+    <!-- 2 column grid layout for inline styling -->
+    <!-- Submit button -->
+    <button type="submit" class="btn btn-primary btn-block mb-4">Create</button>
+</form>

@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Web.Farmasi</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            @if (User.Identity.IsAuthenticated)
+            {
+                <a class="navbar-brand" href="/Product/Index">Home</a>
+                <a class="navbar-brand" href="/Product/Product">Product</a>
+
+                <div class="collapse navbar-collapse justify-content-between" id="navbar">
+                    <div class="navbar-nav">
+
+                    </div>
+                    <div class="navbar-nav">
+                        <button id="logout" class="btn"><i class="fa fa-close">Log Out</i></button>
+
+                    </div>
+                    <div class="navbar-nav">
+                        <a class="navbar-brand" href="@Url.Action("Index", "Basket")">
+                            <img src="~/image/basket.svg" width="30" height="30" class="d-inline-block align-top" alt="">
+                            Basket
+                        </a>
+                    </div>
+                </div>
+            }
+
+
+
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2022 - Web.Farmasi - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+    <script>
+        $("#logout").click(function () {
+            window.location.href = '/User/Logout';
+
+        });
+    </script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,27 @@
+﻿@model User
+<form asp-controller="User" asp-action="SignIn" method="post">
+  <!-- Email input -->
+  <div class="form-outline mb-4">
+    <input  asp-for="Email" type="email" id="form2Example1" class="form-control" />
+    <label class="form-label" for="form2Example1">Email address</label>
+      <span asp-validation-for="Email"></span>
+  </div>
+
+  <!-- Password input -->
+  <div class="form-outline mb-4">
+    <input asp-for="Password" type="password" id="form2Example2" class="form-control" />
+    <label class="form-label" for="form2Example2">Password</label>
+     <span asp-validation-for="Password"></span>
+  </div>
+
+  <!-- 2 column grid layout for inline styling -->
+
+
+  <!-- Submit button -->
+  <button type="submit" class="btn btn-primary btn-block mb-4">Sign in</button>
+
+  <!-- Register buttons -->
+  <div class="text-center">
+    <p>Not a member? <a href="@Url.Action("Register","User")">Register</a></p>
+  </div>
+</form>

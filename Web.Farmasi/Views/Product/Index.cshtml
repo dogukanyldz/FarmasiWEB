@@ -1,0 +1,65 @@
+﻿@model List<Product>
+
+
+<div class="row">
+    @{ foreach (var item in Model)
+        {
+
+            <div class="card" style="width: 18rem; margin-left:10px">
+                <img src="~/image/product.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Card Id: @item.Id</h5>
+                    <p class="card-text">@item.ProductName</p>
+                    <a href="#" id="test" onclick="product('@item.Id')" class="btn btn-primary">Add To Cart</a>
+                </div>
+            </div>
+        }
+
+    }
+</div>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<script>
+    //$("#test").click(function () {
+
+    //});
+    function product(id) {
+        $.ajax({
+            url: "/Basket/AddBasketItem?id=" + id+"",
+            type: 'GET',
+            dataType: 'json', // added data type
+            success: function (res) {
+                swal({
+                    title: "Başarılı",
+                    text: "Ürün Sepete Başarı İle Eklendi!",
+                    icon: "success",
+                    dangerMode: true,
+                    buttons: {
+                        Sepet: "Sepete Git",
+                        Kapat: "Kapat",
+                       
+                    },
+                })
+                    .then((willDelete) => {
+                        switch (willDelete) {
+                            case "Sepet":
+                                window.location.href = '/Basket/Index';
+                                break;
+                            default:
+                                break;
+
+
+                        }
+
+                    });
+            }
+        });
+
+
+
+      
+    }
+    
+
+</script>
